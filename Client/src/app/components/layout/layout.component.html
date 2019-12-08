@@ -1,0 +1,92 @@
+<div style="height: 80vh;">
+    <mat-toolbar>
+        <mat-toolbar-row>
+            <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span style="margin: 0px 10px;"><a routerLink="/home">Home</a></span>
+            <span fxHide.lt-md="true" fxShow="true"><a routerLink="/home/job">Add New</a></span>
+            <div fxShow.sm="false" fxShow.gt-md="false" fxShow="true" fxFlex fxLayout fxLayoutAlign="flex-end">
+                <mat-icon>add</mat-icon>
+            </div>
+            <span class="example-spacer"></span>
+            <div fxShow="true" fxHide.lt-md="true" fxFlex fxLayout fxLayoutAlign="flex-end">
+                <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+                <img *ngIf="user.imageUrl" src="{{ 'http://localhost:5005/uploads/' + user.imageUrl }}" alt="Avatar"
+                    class="image" style="
+                    height: 30px;
+                border-radius: 50%;
+            padding: 10px;
+                ">
+
+                <img *ngIf="!user.imageUrl" src="assets/default.png" alt="Avatar" class="image" style="
+height: 30px;
+border-radius: 50%;
+padding: 10px;
+">
+                <span style="margin-top: 10px;font-size: 14px;" mat-button>
+                    {{user?.fullName}}
+                </span>
+                <button (click)="logOut()" mat-button>
+                    log Out
+                </button>
+            </div>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <mat-sidenav-container fxFlexFill>
+        <mat-sidenav #sidenav>
+
+            <div class="main-sidebar">
+                <a style="margin-top: 10px;
+                        margin-left: 10px;" (click)="sidenav.toggle()" [routerLink]=""><i class="material-icons">
+                        close
+                    </i></a>
+
+                <div class="sidbar-body">
+                    <div class="profile">
+                        <img *ngIf="user.imageUrl" src="{{ 'http://localhost:5005/uploads/' +user.imageUrl}}"
+                            alt="Avatar" class="image" style="
+                                height: 60px;
+                            border-radius: 50%;
+                        padding: 10px;
+                            ">
+
+                        <img *ngIf="!user.imageUrl" src="assets/default.png" alt="Avatar" class="image" style="
+                                height: 60px;
+                            border-radius: 50%;
+                        padding: 10px;
+                            ">
+
+                        <div>
+                            <h3 style="margin-bottom: 0px; color: #fff">{{ user?.fullName }}</h3>
+                            <p style="margin-top: 0px;color: #c0c0c0">{{ user?.email}}</p>
+                        </div>
+
+                    </div>
+                    <div class="menu-item">
+                        <a (click)="sidenav.toggle()" routerLink="/home">Home</a>
+                        <a (click)="sidenav.toggle()" routerLink="/home/job">Add New</a>
+                        <a (click)="sidenav.toggle();logOut()" [routerLink]="">Log Out</a>
+                    </div>
+                </div>
+            </div>
+            <!-- <mat-nav-list>
+                <a (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
+                <a href="#" mat-list-item>Menu Item 1</a>
+                <a href="#" mat-list-item>Menu Item 2</a>
+                <a href="#" mat-list-item>Menu Item 3</a>
+                <a href="#" mat-list-item>Menu Item 4</a>
+                <a href="#" mat-list-item>Menu Item 5</a>
+                <a href="#" mat-list-item>Menu Item 6</a>
+            </mat-nav-list> -->
+
+        </mat-sidenav>
+        <mat-sidenav-content fxFlexFill>
+
+            <router-outlet></router-outlet>
+
+
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

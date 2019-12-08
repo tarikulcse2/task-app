@@ -1,0 +1,97 @@
+<div class="main-job">
+    <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
+        <div class="main-content">
+            <a routerLink="/home" mat-icon-button
+                aria-label="Example icon-button with a heart icon">
+                <i class="material-icons">
+                    close
+                </i>
+            </a>
+            <div style="text-align: center; margin-top: 2%;width: 100%;">{{title}}</div>
+            <button type="submit" mat-button fxLayout fxLayoutAlign="flex-end">
+                <mat-icon>done</mat-icon>
+            </button>
+        </div>
+
+        <div class="input-row">
+            <mat-form-field>
+                <input matInput type="text" placeholder="TITLE" formControlName="title">
+                <!-- <mat-error *ngIf="errorHandling('title', 'required')">
+                    Title Must be Required
+                </mat-error> -->
+                <mat-error *ngIf="submitted && jobForm.controls.title.errors && jobForm.controls.title.errors.required">
+                    Title Must be Required
+                </mat-error>
+                
+            </mat-form-field>
+        </div>
+
+        <div class="input-row">
+            <mat-form-field>
+                <textarea matInput placeholder="DESCRIPTION" formControlName="description"></textarea>
+            </mat-form-field>
+        </div>
+
+        <div class="input-row">
+            <mat-form-field>
+                <input matInput [matDatepicker]="dp" placeholder="DATE" formControlName="date" readonly="readonly">
+                <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                <mat-datepicker #dp></mat-datepicker>
+                <mat-error *ngIf="submitted && jobForm.controls.date.errors && jobForm.controls.date.errors.required">
+                    Date Must be Required
+                </mat-error>
+            </mat-form-field>
+        </div>
+        
+
+        <div style="display: flex;
+    flex-direction: row;">
+            <div class="input-row">
+                <mat-form-field>
+                    <input matInput type="text" formControlName="fromTime" placeholder="FROM" [ngxTimepicker]="fromTime" readonly="readonly">
+        <ngx-material-timepicker #fromTime></ngx-material-timepicker>
+        <mat-error *ngIf="submitted && jobForm.controls.fromTime.errors && jobForm.controls.fromTime.errors.required">
+            From Time Must be Required
+        </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="input-row" style="padding: 0px 41px;">
+                <mat-form-field>
+                    <input matInput type="text" formControlName="toTime" placeholder="TO" [ngxTimepicker]="toTime" readonly="readonly">
+                    <ngx-material-timepicker #toTime></ngx-material-timepicker>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="input-row">
+            <mat-form-field>
+                <input matInput type="text" placeholder="LOCATION" formControlName="location">
+                <span matSuffix>
+                    <mat-icon> location_on</mat-icon>
+                </span>
+            </mat-form-field>
+        </div>
+
+        <mat-form-field>
+            <mat-label>NOTIFY</mat-label>
+            <mat-select formControlName="notify" >
+                <mat-option *ngFor="let time of timeAlert" [value]="time.value">
+                    {{time.text}}
+                </mat-option>
+            </mat-select>
+            <span style="margin-left: 10px;" matSuffix>Email</span>
+        </mat-form-field>
+        <mat-form-field>
+            <input type="text" placeholder="LABEL" formControlName="label" aria-label="Number" matInput [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let color of colors" [value]="color.color" [style.background-color]="color.color">
+                    {{color.name}}
+                </mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="submitted && jobForm.controls.label.errors && jobForm.controls.label.errors.required">
+                Label Must be Required
+            </mat-error>
+        </mat-form-field>
+
+    </form>
+</div>

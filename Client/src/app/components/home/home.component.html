@@ -1,0 +1,35 @@
+<div class="main-body">
+    <h3 *ngIf="jobs.length == 0">No data found!</h3>
+    <div class="card" *ngFor="let item of jobs">
+        <div class="title">{{item.date | date: 'mediumDate'}}</div>
+        <div class="content" *ngFor="let job of item.data" [ngStyle]="{borderLeft: '5px solid ' + job.label }">
+            <div class="content-body">
+                <div class="content-title">
+                    <h4>{{ job.title }}</h4>
+                    <p> <span *ngIf="job.fromTime">
+                            <mat-icon>alarm</mat-icon>
+                            <span class="span-text">{{ job.fromTime }}</span>
+                            <span *ngIf="job.toTime" class="span-text">- {{ job.toTime }}</span>
+                        </span>
+                        
+                        <span *ngIf="job.location">
+                            <mat-icon> location_on</mat-icon>
+                            <span class="span-text">{{ job.location }}</span>
+                        </span>
+                        
+                    </p>
+                </div>
+                    <div class="done-icon">
+                        <a [routerLink]="['/home/job/edit', job.id]" mat-button>
+                            <!-- <mat-icon>done</mat-icon> -->
+                            <mat-icon>edit</mat-icon>
+                        </a>
+                        <button (click)="delete(job.id)" mat-button>
+                            <!-- <mat-icon>done</mat-icon> -->
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

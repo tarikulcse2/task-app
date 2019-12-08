@@ -1,0 +1,70 @@
+<div class="main">
+        <form [formGroup]="regForm" (ngSubmit)="onSubmit()" class="from">
+    <div>
+        <div class="col-m-12 col-s-12 col-12">
+            <a routerLink="/login" style="color: #afafaf" class="col-m-1 col-s-1 col-1" mat-icon-button
+                aria-label="Example icon-button with a heart icon">
+                <i class="material-icons">
+                    close
+                </i>
+            </a>
+            <div style="text-align: center; margin-top: 3%;" class="col-m-9 col-s-10 col-9">Sign Up</div>
+        </div>
+
+        <div class="image-circle col-m-11 col-s-11 col-11">
+            <img src="{{previewUrl}}"
+                alt="Avatar" class="image">
+            <input id="input-file-id" type="file" (change)="fileChange($event)" style="display: none;" />
+            <label class="text" for="input-file-id">+</label>
+        </div>
+
+        <div class="input-row">
+            <mat-form-field>
+                <input matInput type="text" placeholder="FULL NAME" formControlName="fullName">
+                <mat-error
+            *ngIf="regForm.controls.fullName.invalid && (regForm.controls.fullName.dirty || regForm.controls.fullName.touched)">
+            <div *ngIf="regForm.controls.fullName.errors.required">
+                Full Name is required.
+            </div>
+        </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="input-row">
+            <mat-form-field>
+                <input matInput type="email" placeholder="EMAIL" formControlName="email">
+                <mat-error
+            *ngIf="regForm.controls.email?.invalid && (regForm.controls.email.dirty || regForm.controls.email.touched)">
+            <div *ngIf="regForm.controls.email?.errors.required">
+                Email is required.
+            </div>
+        </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="input-row">
+            <mat-form-field>
+                <input matInput type="password" placeholder="PASSWORD" formControlName="password">
+                <mat-error
+            *ngIf="regForm.controls.password?.invalid && (regForm.controls.password.dirty || regForm.controls.password.touched)">
+            <div *ngIf="regForm.controls.password?.errors.required">
+                Password is required.
+            </div>
+        </mat-error>
+            </mat-form-field>
+        </div>
+
+        <mat-form-field>
+            <input matInput [matDatepicker]="dp" placeholder="BIRTHDAY" readonly="readonly" formControlName="date">
+            <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+            <mat-datepicker #dp></mat-datepicker>
+        </mat-form-field>
+
+        <button [disabled]="regForm.invalid" class="responsive center" 
+        mat-button>Create</button>
+        <p>
+            <span>ALREADY HAVE AN ACCOUNT?</span>
+            <a class="back-login" routerLink="/login">SIGN IN</a></p>
+    </div>
+    </form>
+</div>

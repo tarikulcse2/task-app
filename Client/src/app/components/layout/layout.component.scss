@@ -1,0 +1,70 @@
+
+.mat-drawer-backdrop.mat-drawer-shown {
+  background-color: #fff;
+}
+
+.mat-toolbar {
+  background: #ffffff;
+  color: rgba(0,0,0,.87);
+}
+
+.main-sidebar {
+  display: none;
+  flex-direction: column;
+  background-color:teal;
+  height: 100%;
+  width: 400px;
+}
+
+
+.profile {
+  display: flex;
+  flex-direction: row;
+}
+
+.sidbar-body {
+  position: relative;
+    left: 45px;
+    top: 15px;
+    width: 250px;
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  left: 50px;
+  top: 30px;
+
+  
+}
+
+.menu-item a {
+  padding: 10px;
+  text-decoration: none;
+  color: #fff;
+  width: 30%;
+}
+
+// button {
+//     margin: 0;
+//     width: 24px;
+//     position: relative;
+//     left: 2%;
+//     top: 5%;
+// }
+
+@media screen and (max-width: 700px) {
+  .main-sidebar {
+    display: flex;
+  }
+}
+
+@media only screen and (min-width: 600px) { 
+  
+}
+@media screen and (max-width: 400px) {
+  .main-sidebar {
+    display: flex;
+  }
+}

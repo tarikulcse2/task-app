@@ -1,0 +1,29 @@
+img {
+  margin-top: 15%;
+  margin-bottom: 20%;
+}
+
+button {
+  background-color: #50d2c2;
+  width: 100%;
+  color: #fff;
+}
+
+a {
+  color: #afafaf;
+  text-decoration: none;
+  font-size: 13px;
+  margin-left: 8px;
+}
+
+p {
+  text-align: center;
+  & span {
+    font-size: 12px;
+    color: #c0c0c0;
+  }
+}
+
+.input-row strong {
+  margin-left: 3px;
+}

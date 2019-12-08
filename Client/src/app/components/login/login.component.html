@@ -1,0 +1,33 @@
+<div class="main">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="from">
+        <div>
+            <img class="responsive center" src="assets/logo.png" alt="" srcset="">
+            <div class="input-row">
+                <mat-form-field>
+                    <input matInput type="email" formControlName="email" placeholder="USERNAME">
+                    <!-- error -->
+                    <mat-error *ngIf="errorHandling('email', 'required')">
+                        You must provide a<strong>email</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="input-row">
+                <mat-form-field>
+                    <input matInput type="password" formControlName="password" placeholder="PASSWORD">
+                    <span style="font-size: 12px; color: #c0c0c0;" matSuffix>Forgot Password</span>
+                    <!-- error -->
+                    <mat-error *ngIf="errorHandling('password', 'required')">
+                        You must provide a<strong>password</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <button class="responsive center" mat-button>Sign
+                In</button>
+            <p>
+                <span>DON'T HAVE AN ACCOUNT?</span>
+                <a routerLink="/reg">SIGN UP</a>
+            </p>
+        </div>
+    </form>
+</div>
